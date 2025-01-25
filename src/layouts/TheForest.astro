@@ -1,0 +1,37 @@
+---
+import HTML from "../components/HTML.astro";
+import Header from "../components/Header.astro";
+import Main from "../components/Main.astro";
+import Tree from "../assets/tree.png";
+import Footer from "../components/Footer.astro";
+import Back from "../components/Back.astro";
+---
+
+<HTML>
+    <Header src={Tree} title="The Forest" subtitle="Scraps and crap" />
+    <Main>
+        <Back href="/the-forest"/>
+        <slot />
+    </Main>
+    <Footer
+        >Background by <a
+            href="https://commons.wikimedia.org/wiki/File:Wooden_staircase_steps_in_the_forest_of_Hallasan_Park_Eorimok_Trail_at_dusk_on_Jeju_Island_in_South_Korea.jpg"
+            >Basile Morin</a
+        >, licensed under <a
+            href="https://creativecommons.org/licenses/by-sa/4.0"
+            >CC BY-SA 4.0</a
+        > , via Wikimedia Commons
+    </Footer>
+</HTML>
+<style>
+    body {
+        background-image: url("/forest2.png");
+        background-color: #283b21;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+        max-width: 80rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
+</style>

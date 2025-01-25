@@ -1,0 +1,48 @@
+---
+import HTML from "../components/HTML.astro";
+import Header from "../components/Header.astro";
+import Main from "../components/Main.astro";
+import Mug from "../assets/mug-dither.png";
+import ContactPole from "../components/ContactPole.astro";
+---
+
+<HTML>
+    <Header src={Mug} title="About Me" subtitle="Check me out" id="header" />
+    <div id="flex">
+        <div id="pole">
+            <ContactPole />
+        </div>
+        <Main>
+            <slot />
+        </Main>
+    </div>
+</HTML>
+<style is:global>
+    body {
+        color: white;
+        background-color: #39261f;
+        background-image: url("/537dark.png");
+        background-attachment: fixed;
+        background-size: 22em;
+        max-width: 80rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #flex {
+        display: flex;
+        flex-wrap: wrap;
+        flex-flow: row wrap-reverse;
+        margin-top: 2rem;
+    }
+    #pole {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    ul {
+        padding-left: 30%;
+        text-align: left;
+        list-style-position: inside;
+    }
+</style>

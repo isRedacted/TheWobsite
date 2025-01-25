@@ -1,0 +1,66 @@
+---
+import { Image } from "astro:assets";
+import HTML from "../components/HTML.astro";
+import Pond from "../assets/pond-dither.png";
+import AA from "../assets/AA.mp3";
+import APAAR from "../assets/APAAR.mp3";
+import STB from "../assets/STB.mp3";
+var audioArray = [AA, APAAR, STB];
+---
+
+<HTML>
+    <div id="rain"></div>
+    <slot />
+    <div id="pond">
+        <Image
+            src={Pond}
+            loading={"eager"}
+            alt="A dark pond in which you can sit next to and relax"
+        />
+    </div>
+    <audio loop controls id="audio">
+        <source data-audio={audioArray} id="source" src="" type="audio/mpeg" />
+    </audio>
+</HTML>
+
+<style>
+    body {
+        color: rgb(255, 255, 255);
+        background-color: #081308;
+        text-shadow: 1px 0px 10px rgb(0, 0, 0);
+        text-align: center;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: clamp(1em, 1.25em, 25vw);
+        filter: brightness(50%);
+        overflow: hidden;
+    }
+
+    body img {
+        width: clamp(2rem, 80vw, 50rem);
+        height: auto;
+    }
+    div#pond {
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 7vh;
+    }
+
+    div#rain {
+        background-image: url("/rain.gif");
+        background-size: cover;
+        width: 99vw;
+        height: 100vh;
+        translate: 0% -3%;
+        position: absolute;
+        pointer-events: none;
+    }
+</style>
+<script is:inline>
+    var audio = document.getElementById("audio");
+    var source = document.getElementById("source");
+    var audioArray = source.dataset.audio.split(',');
+
+    var audioSrc = audioArray[Math.floor(Math.random() * audioArray.length)];
+    source.src = audioSrc;
+    audio.play();
+</script>

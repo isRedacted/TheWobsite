@@ -1,0 +1,76 @@
+---
+import Image from "astro/components/Image.astro";
+import Fence from "../assets/wood-fence.png";
+import Sign from "../assets/wood-sign.png";
+---
+
+<div id="contactpole">
+    <div id="pole">
+        <Image src={Fence} alt="" loading={"eager"} id="poleimg" />
+    </div>
+    <div id="signcontainer">
+        <div class="tiltleft">
+            <p style="font-weight: bold;">LINKS</p>
+            <Image src={Sign} alt="" class="sign" loading={"eager"} />
+        </div>
+        <a href="mailto:isRedacted@proton.me">
+            <div class="tiltright">
+                <p>E-Mail</p>
+                <Image src={Sign} alt="" class="sign" loading={"eager"} />
+            </div>
+        </a>
+        <a href="https://neocities.org/site/thewobsite" title="I literally just host this website as an iframe on neocities because I'm a cheeky (and lazy) scamp">
+            <div class="tiltleft">
+                <p>Neocities</p>
+                <Image src={Sign} alt="" class="sign" loading={"eager"} />
+            </div>
+        </a>
+    </div>
+
+    <style>
+        #contactpole {
+        }
+
+        #pole {
+            text-align: center;
+        }
+        #poleimg {
+            max-height: 30rem;
+            object-fit: scale-down;
+            z-index: -1;
+        }
+
+        #signcontainer {
+            display: grid;
+            row-gap: 1rem;
+            margin-top: -450px;
+            position: relative;
+            z-index: auto;
+            text-align: center;
+        }
+
+        .sign {
+            max-width: 8rem;
+            height: auto;
+            z-index: -1;
+            position: relative;
+        }
+        .tiltleft {
+            rotate: 5deg;
+        }
+        .tiltright {
+            rotate: -5deg;
+        }
+
+        p {
+            margin-bottom: -20%;
+            text-shadow: 3px 2px 2px black;
+            z-index: 2;
+            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+
+        a p {
+            color: white;
+        }
+    </style>
+</div>

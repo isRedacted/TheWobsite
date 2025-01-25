@@ -1,0 +1,15 @@
+---
+const { last, next } = Astro.props;
+---
+
+<a id="last" href={last}><</a>
+<a id="next" href={next}>></a>
+
+<style>
+    #last {
+        float: left;
+    }
+    #next {
+        float: right;
+    }
+</style>

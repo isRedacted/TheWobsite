@@ -1,0 +1,30 @@
+---
+import HTML from "../components/HTML.astro";
+import Header from "../components/Header.astro";
+import Main from "../components/Main.astro";
+import Megaphone from "../assets/megaphone.png";
+---
+
+<HTML>
+    <Header
+        src={Megaphone}
+        title="Posts"
+        subtitle="Imagine me screaming in your ear"
+    />
+    <Main>
+        <slot />
+    </Main>
+</HTML>
+<style>
+    body {
+        background-image: url('/posts.png');
+        background-color: #73706d;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+        max-width: 80rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+</style>

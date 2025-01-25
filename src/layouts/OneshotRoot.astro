@@ -1,0 +1,33 @@
+---
+import HTML from "../components/HTML.astro";
+import Header from "../components/Header.astro";
+import Main from "../components/Main.astro";
+import Paper from "../assets/paper-single.png";
+---
+
+<HTML>
+    <Header
+        src={Paper}
+        title="Oneshot"
+        subtitle="Quick n dirty ones"
+        id="header"
+    />
+    <Main>
+        <slot/>
+    </Main>
+</HTML>
+<style is:global>
+    body {
+        background-image: url("/oneshot.png");
+        background-color: #513e84;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+        max-width: 80rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    header {
+        color: white;
+    }
+</style>

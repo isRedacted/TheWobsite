@@ -1,0 +1,219 @@
+---
+import { Image } from "astro:assets";
+import bookcase from "../assets/bookcase-dither.png";
+import openBook from "../assets/book-dither.png";
+import papers from "../assets/papers.png";
+import megaphone from "../assets/megaphone-dither.png";
+import mug from "../assets/mug-dither.png";
+import forest from "../assets/windy-forest.mp3";
+---
+
+<div id="bookcaseContainer">
+    <Image
+        id="bookcase"
+        loading={"eager"}
+        src={bookcase}
+        alt="A dithered bookshelf containing vertically arranged options in the shelves. Looks pretty retro cool ngl."
+    />
+    <div id="shelvesContainer">
+        <div id="stories" class="shelf">
+            <a href="/long">
+                <Image src={openBook} loading={"eager"} alt="An open book." />
+                <h1 class="shelfText">Longform</h1>
+                <h2 class="shelfText">Stories of more than one chapter</h2>
+            </a>
+        </div>
+        <div id="oneshot" class="shelf">
+            <a href="/oneshot">
+                <Image
+                    src={papers}
+                    loading={"eager"}
+                    alt="A fanned out pile of papers."
+                />
+                <h1 class="shelfText">One-shot</h1>
+                <h2 class="shelfText">Short stories in a single chapter</h2>
+            </a>
+        </div>
+        <div
+            id="the-forest"
+            class="shelf"
+            style="background-image: url('/forest.jpg');"
+            onmouseover="PlaySound()"
+            onmouseout="StopSound()"
+        >
+            <audio id="forest" src={forest} loop></audio>
+            <a href="/the-forest">
+                <h1 class="shelfText">The Forest</h1>
+                <h2 class="shelfText">
+                    Bits of stories either abandoned or otherwise unlikely to be
+                    completed
+                </h2>
+            </a>
+        </div>
+        <div id="posts" class="shelf">
+            <a href="/posts">
+                <Image src={megaphone} alt="A red and white megaphone." />
+                <h1 class="shelfText">Posts</h1>
+                <h2 class="shelfText">
+                    Updates and rambles, rambles and updates
+                </h2>
+            </a>
+        </div>
+        <div id="about" class="shelf">
+            <a href="/about">
+                <Image src={mug} alt="A blue mug of brown liquid." />
+                <h1 class="shelfText">About</h1>
+                <h2 class="shelfText">
+                    Oh, so you wanna learn about me, do ya?
+                </h2>
+            </a>
+        </div>
+        <div id="nothing" class="shelf">
+            <a href="/nothing">
+                <h1 class="shelfText">Nothing</h1>
+                <h2 class="shelfText">There's nothing here</h2>
+            </a>
+        </div>
+    </div>
+</div>
+<style>
+    img  {
+        image-rendering: pixelated;
+    }
+
+    div#bookcaseContainer {
+        display: grid;
+        grid-template-areas: "bookcase";
+        position: relative;
+        width: clamp(300px, 100%, 800px);
+        margin-left: auto;
+        margin-right: auto;
+        overflow: visible;
+    }
+    img#bookcase {
+        max-width: 100%;
+        min-width: 100%;
+        grid-area: bookcase;
+        height: auto;
+    }
+
+    div#shelvesContainer {
+        grid-area: bookcase;
+        width: 82%;
+        transform: translateX(-0.5%);
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
+    }
+
+    div.shelf {
+        aspect-ratio: 2 / 1;
+        position: relative;
+        display: grid;
+    }
+    div.shelf:hover img {
+        rotate: 3deg;
+        scale: 105%;
+        translate: 0 -5%;
+    }
+    div.shelf:hover h1 {
+        scale: 104%;
+    }
+
+    .shelf img {
+        position: absolute;
+        object-fit: scale-down;
+    }
+
+    div#stories {
+        margin-top: 11%;
+    }
+    div#stories img {
+        max-width: 35%;
+        max-height: 45%;
+        translate: 13% 118%;
+    }
+
+    div#oneshot {
+        scale: 101%;
+        margin-top: 4%;
+        margin-right: 1%;
+    }
+    div#oneshot img {
+        width: 40%;
+        height: 65%;
+        translate: 4% 55%;
+    }
+
+    div#the-forest {
+        margin-top: 6%;
+        scale: 100% 102%;
+        filter: brightness(80%);
+    }
+    div#the-forest h1 {
+        top: 5%;
+        pointer-events: none;
+    }
+    div#the-forest h2 {
+        top: 35%;
+        pointer-events: none;
+    }
+
+    div#posts {
+        margin-top: 7%;
+    }
+    div#posts img {
+        width: 35%;
+        height: 60%;
+        translate: 0% 64%;
+        transform:rotate(-30deg);
+        image-rendering: auto;
+    }
+
+    div#about {
+        margin-top: 5%;
+    }
+    div#about img {
+        width: 29%;
+        height: 60%;
+        translate: 10% 67%;
+    }
+
+    div#nothing {
+        margin-top: 5%;
+    }
+
+    h1.shelfText {
+        font-family: Arial, Helvetica, sans-serif;
+        color: white;
+        text-decoration: none;
+        left: 45%;
+        top: 10%;
+        position: absolute;
+        font-size: clamp(2rem, 8vw, 4rem);
+        text-shadow: 4px 4px 4px #000000;
+    }
+
+    h2.shelfText {
+        font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+        position: absolute;
+        left: 45.5%;
+        top: 40%;
+        font-size: clamp(1rem, 3vw, 2rem);
+        color: white;
+        text-shadow: 4px 4px 4px #000000;
+    }
+</style>
+<script is:inline>
+    function PlaySound() {
+        var thissound = document.getElementById("forest");
+        thissound.play();
+        console.log();
+    }
+
+    function StopSound() {
+        var thissound = document.getElementById("forest");
+        thissound.pause();
+        thissound.currentTime = 0;
+    }
+</script>

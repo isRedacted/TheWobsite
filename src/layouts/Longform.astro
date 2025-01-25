@@ -1,0 +1,27 @@
+---
+import HTML from "../components/HTML.astro";
+import Header from "../components/Header.astro";
+import Book from "../assets/book-dither.png";
+import Main from "../components/Main.astro";
+import Back from "../components/Back.astro";
+---
+
+<HTML>
+    <Header src={Book} title="Longform" subtitle="Loooooooooooooong stories" />
+    <Main>
+        <Back href="/long"/>
+        <slot />
+    </Main>
+</HTML>
+<style>
+    body {
+        background-image: url("/longform.png");
+        background-color: #25211f;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+        max-width: 80rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
+</style>
