@@ -1,0 +1,4 @@
+---
+layout: "../../layouts/PostsRoot.astro"
+---
+
